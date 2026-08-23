@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kin Bech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Header / Top bar -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="{% url 'home' %}" class="brand">Kin Bech</a>
+
+            <nav class="header-nav">
+                {% if user.is_authenticated %}
+                    <!-- Logged in: username + logout -->
+                    <a href="{% url 'profile' user.username %}" style="font-weight: 700;">@{{ user.username }}</a>
+                    <a href="{% url 'logout' %}" style="color: #b91c1c; font-size: 13px;">Logout</a>
+                {% else %}
+                    <!-- Logged out: login and register -->
+                    <a href="{% url 'login' %}">Log in</a>
+                    <a href="{% url 'register' %}" class="btn" style="padding: 6px 14px; font-size: 13px;">Sign up</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="site-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Bottom navigation (Instagram-style) -->
+    {% if user.is_authenticated %}
+    <nav class="bottom-nav">
+        <a href="{% url 'home' %}" title="Home" class="nav-icon-home">🏠</a>
+        <a href="{% url 'search' %}" title="Search" class="nav-icon-search">🔍</a>
+        <a href="{% url 'create_post' %}" title="Add" class="nav-icon-add">➕</a>
+        <!-- Paper airplane icon for Messages -->
+        <a href="{% url 'conversations' %}" title="Messages" class="nav-icon-messages">📩</a>
+        <a href="{% url 'settings' %}" title="Settings" class="nav-icon-settings">⚙️</a>
+    </nav>
+    {% endif %}
+</body>
+</html>

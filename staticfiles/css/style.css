@@ -1,0 +1,504 @@
+/* =========================
+   Kin Bech – WWF-style CSS
+   ========================= */
+
+:root {
+    --color-bg: #f7f9fb;
+    --color-surface: #ffffff;
+    --color-text: #1f2933;
+    --color-text-muted: #6b7280;
+    --color-border: #e5e7eb;
+
+    --color-primary: #0b3d6b;      /* Dark blue */
+    --color-primary-light: #3b82f6;/* Light blue */
+    --color-accent: #8b2d2d;       /* Dark red/brown for CTA */
+    --color-accent-hover: #6b1f1f;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-pill: 9999px;
+
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+   Header / Navigation
+   ========================= */
+
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: var(--color-primary);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.header-nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.header-nav a:hover {
+    background: #f3f4f6;
+}
+
+/* =========================
+   Main layout
+   ========================= */
+
+.site-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+}
+
+/* =========================
+   Hero section (WWF-style)
+   ========================= */
+
+.hero {
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 32px 20px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        padding: 40px 28px;
+    }
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hero-title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+}
+
+.hero-subtitle {
+    font-size: 16px;
+    color: #cfe6ff;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .hero-subtitle {
+        font-size: 18px;
+    }
+}
+
+.hero-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    background: #124a8a;
+}
+
+@media (min-width: 768px) {
+    .hero-image {
+        height: 260px;
+    }
+}
+
+/* =========================
+   Cards (posts, profiles, etc.)
+   ========================= */
+
+.card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.card h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin-top: 8px;
+}
+
+.card .meta {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 6px;
+}
+
+.card a.link-primary {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+.btn {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn:hover {
+    background: var(--color-accent-hover);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background: #fff;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: #072a4d;
+}
+
+/* =========================
+   Forms
+   ========================= */
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(11, 61, 107, 0.12);
+}
+
+/* =========================
+   Auth pages (login/register)
+   ========================= */
+
+.auth-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    max-width: 380px;
+    margin: 24px auto;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.auth-box h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.auth-box p {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.auth-box a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* =========================
+   Profile header
+   ========================= */
+
+.profile-header {
+    background: linear-gradient(180deg, #eef6ff, #fff);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 22px 16px;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.profile-header img {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-md);
+    margin: 0 auto 10px;
+}
+
+.profile-header h2 {
+    margin: 8px 0 4px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.profile-header .bio {
+    font-size: 14px;
+    margin: 4px 0;
+}
+
+.profile-header .location {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin: 4px 0 10px;
+}
+
+.profile-header .message-btn {
+    display: inline-block;
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* =========================
+   Chat / Messages
+   ========================= */
+
+.chat-messages {
+    max-height: 55vh;
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fafbfc;
+}
+
+.chat-messages p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+/* =========================
+   Search
+   ========================= */
+
+.search-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.search-form input[type="text"] {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+/* =========================
+   Bottom navigation (mobile, colorful icons)
+   ========================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 520px;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    z-index: 1000;
+}
+
+/* Base icon style */
+.bottom-nav a {
+    text-decoration: none;
+    font-size: 22px;
+    text-align: center;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    transition: transform 0.1s ease, filter 0.15s ease, background 0.15s ease;
+}
+
+/* Individual icon colors */
+.bottom-nav .nav-icon-home {
+    color: #7c3aed;   /* Purple */
+}
+
+.bottom-nav .nav-icon-search {
+    color: #db2777;   /* Pink */
+}
+
+.bottom-nav .nav-icon-add {
+    color: #f59e0b;   /* Yellow / Amber */
+}
+
+.bottom-nav .nav-icon-messages {
+    color: #2563eb;   /* Blue (paper airplane) */
+}
+
+.bottom-nav .nav-icon-settings {
+    color: #16a34a;   /* Green */
+}
+
+/* Hover effect */
+.bottom-nav a:hover {
+    background: #f3f4f6;
+    filter: brightness(0.9);
+}
+
+/* =========================
+   Utility
+   ========================= */
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 24px 0 12px;
+}

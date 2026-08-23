@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="auth-box">
+    <h2>Settings</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Save</button>
+    </form>
+    <p style="margin-top: 12px;">
+        <a href="{% url 'logout' %}" class="text-muted">Log out</a>
+    </p>
+</div>
+
+{% endblock %}

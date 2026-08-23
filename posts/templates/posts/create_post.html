@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="auth-box" style="max-width: 520px;">
+    <h2>Create Post</h2>
+
+    <form method="post" enctype="multipart/form-data" id="post-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.post_type.id_for_label }}">What do you want to do?</label>
+            {{ form.post_type }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.category.id_for_label }}">Category</label>
+            {{ form.category }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Title</label>
+            {{ form.title }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{ form.description }}
+        </div>
+
+        <!-- Location: shown for both Buy and Sell -->
+        <div class="form-group" id="location-group">
+            <label for="{{ form.location.id_for_label }}">Location</label>
+            {{ form.location }}
+        </div>
+
+        <!-- Price: only for Sell -->
+        <div class="form-group" id="price-group">
+            <label for="{{ form.price.id_for_label }}">Price</label>
+            {{ form.price }}
+        </div>
+
+        <!-- Image: only for Sell -->
+        <div class="form-group" id="image-group">
+            <label for="{{ form.image.id_for_label }}">Image</label>
+            {{ form.image }}
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%;">Post</button>
+    </form>
+</div>
+
+<script>
+    const postTypeField = document.getElementById('post-type-field');
+    const priceGroup = document.getElementById('price-group');
+    const imageGroup = document.getElementById('image-group');
+    const priceInput = document.getElementById('price-field');
+    const imageInput = document.getElementById('image-field');
+
+    function toggleFields() {
+        const postType = postTypeField ? postTypeField.value : '';
+        if (postType === 'BUY') {
+            // Hide price and image for Buy requests
+            if (priceGroup) priceGroup.style.display = 'none';
+            if (imageGroup) imageGroup.style.display = 'none';
+            // Clear values so they don't get submitted
+            if (priceInput) priceInput.value = '';
+            // For file input, just hide; browser won't upload if hidden and empty
+        } else if (postType === 'SELL') {
+            // Show price and image for Sell posts
+            if (priceGroup) priceGroup.style.display = 'block';
+            if (imageGroup) imageGroup.style.display = 'block';
+        } else {
+            // Default: hide both
+            if (priceGroup) priceGroup.style.display = 'none';
+            if (imageGroup) imageGroup.style.display = 'none';
+        }
+    }
+
+    if (postTypeField) {
+        postTypeField.addEventListener('change', toggleFields);
+        // Run once on load
+        toggleFields();
+    }
+</script>
+
+{% endblock %}

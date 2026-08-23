@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="section-title">Messages</h2>
+
+{% for conv in conversations %}
+<div class="card">
+    <p>
+        <a href="{% url 'conversation_detail' conv.id %}">
+            Conversation #{{ conv.id }} (updated {{ conv.updated_at|date:"M d, H:i" }})
+        </a>
+    </p>
+</div>
+{% empty %}
+<div class="card">
+    <p>No conversations yet.</p>
+</div>
+{% endfor %}
+
+{% endblock %}

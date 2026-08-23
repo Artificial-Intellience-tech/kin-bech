@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Kin Bech Marketplace</h1>
+        <p class="hero-subtitle">Buy and sell with people around you.</p>
+    </div>
+    <img class="hero-image" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop" alt="Marketplace">
+</section>
+
+<h2 class="section-title">Latest posts</h2>
+
+{% for post in posts %}
+<div class="card">
+    <h3>{{ post.title }}</h3>
+    <p><strong>{{ post.post_type }}</strong> • {{ post.category }}</p>
+    <p>{{ post.description|truncatewords:20 }}</p>
+    {% if post.price %}<p><strong>Rs. {{ post.price }}</strong></p>{% endif %}
+    <p class="text-muted">📍 {{ post.location }}</p>
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+    {% endif %}
+    <div class="meta">
+        Posted by <a class="link-primary" href="{% url 'profile' post.user.username %}">@{{ post.user.username }}</a> •
+        {{ post.created_at|date:"M d, Y H:i" }}
+    </div>
+</div>
+{% empty %}
+<div class="card">
+    <p>No posts yet. Be the first to <a href="{% url 'create_post' %}">create one</a>.</p>
+</div>
+{% endfor %}
+
+{% endblock %}
