@@ -22,6 +22,12 @@
     <p><strong>{{ post.post_type }}</strong> • {{ post.category }}</p>
     <p>{{ post.description|truncatewords:15 }}</p>
     {% if post.price %}<p><strong>Rs. {{ post.price }}</strong></p>{% endif %}
+
+    {% if user == profile_user %}
+    <p>
+        <a href="{% url 'delete_post' post.id %}" style="color: #b91c1c; font-weight: 700;">Delete</a>
+    </p>
+    {% endif %}
 </div>
 {% empty %}
 <div class="card">

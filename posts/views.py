@@ -26,3 +26,14 @@ def profile_view(request, username):
     user = get_object_or_404(User, username=username)
     posts = user.posts.all()
     return render(request, 'posts/profile.html', {'profile_user': user, 'posts': posts})
+
+@login_required
+def delete_post_view(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if post.user != request.user:
+        # Only the owner can delete
+        return redirect('home')
+    if request.method == 'POST':
+        post.delete()
+        return redirect('profile', username=request.user.username)
+    return render(request, 'posts/confirm_delete_post.html', {'post': post})

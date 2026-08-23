@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="auth-box">
+    <h2>Delete Post</h2>
+    <p>Are you sure you want to delete this post?</p>
+    <p><strong>{{ post.title }}</strong> ({{ post.post_type }} • {{ post.category }})</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn" style="background: #b91c1c;">Yes, delete</button>
+        <a href="{% url 'profile' request.user.username %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
