@@ -4,7 +4,6 @@ from .models import Post
 from .forms import PostForm
 from accounts.models import User
 
-@login_required
 def home_view(request):
     posts = Post.objects.select_related('user').order_by('-created_at')
     return render(request, 'posts/home.html', {'posts': posts})
