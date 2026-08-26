@@ -37,15 +37,19 @@
         <a href="{% url 'home' %}" title="Home" class="nav-icon-home">🏠</a>
         <a href="{% url 'search' %}" title="Search" class="nav-icon-search">🔍</a>
         <a href="{% url 'create_post' %}" title="Add" class="nav-icon-add">➕</a>
-        <!-- Paper airplane icon for Messages -->
-        <a href="{% url 'conversations' %}" class="nav-link">
-            Messages
+
+        <!-- Messages with unread badge -->
+        <a href="{% url 'conversations' %}" title="Messages" class="nav-icon-messages">
+            ✉️
             {% if unread_msg_count %}
                 <span class="badge">{{ unread_msg_count }}</span>
             {% endif %}
-        </a>        
+        </a>
+
+        <!-- New message (user search) -->
+        <a href="{% url 'user_search' %}" title="New message">👤</a>
+
         <a href="{% url 'settings' %}" title="Settings" class="nav-icon-settings">⚙️</a>
-        <a href="{% url 'user_search' %}">New message</a>
     </nav>
     {% endif %}
 </body>

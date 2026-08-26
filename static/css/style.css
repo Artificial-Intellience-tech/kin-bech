@@ -456,6 +456,7 @@ img {
     padding: 6px 8px;
     border-radius: var(--radius-sm);
     transition: transform 0.1s ease, filter 0.15s ease, background 0.15s ease;
+    position: relative;
 }
 
 /* Individual icon colors */
@@ -472,7 +473,7 @@ img {
 }
 
 .bottom-nav .nav-icon-messages {
-    color: #2563eb;   /* Blue (paper airplane) */
+    color: #2563eb;   /* Blue */
 }
 
 .bottom-nav .nav-icon-settings {
@@ -502,6 +503,7 @@ img {
     font-weight: 800;
     margin: 24px 0 12px;
 }
+
 /* Unread badge */
 .badge {
     display: inline-block;
@@ -514,6 +516,9 @@ img {
     border-radius: 10px;
     text-align: center;
     margin-left: 6px;
+    position: absolute;
+    top: 2px;
+    right: 6px;
 }
 
 /* Chat bubbles */

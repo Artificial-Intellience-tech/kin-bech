@@ -18,27 +18,12 @@
 </form>
 
 <script>
-const conversationId = {{ conversation.id }};
-const myUserId = {{ request.user.id }};
-let lastMessageId = {{ last_message_id|default:0 }};
-
-async function pollMessages() {
-    const res = await fetch(`/messaging/api/conversation/${conversationId}/new-messages/?last_id=${lastMessageId}`);
-    const data = await res.json();
-    if (data.messages.length) {
-        const container = document.getElementById("messages-container");
-        data.messages.forEach(m => {
-            const isMe = m.sender_id === myUserId;
-            const bubble = document.createElement("div");
-            bubble.className = "message-bubble " + (isMe ? "me" : "other");
-            bubble.textContent = m.text;
-            container.appendChild(bubble);
-            lastMessageId = Math.max(lastMessageId, m.id);
-        });
-        container.scrollTop = container.scrollHeight;
-    }
-}
-
-setInterval(pollMessages, 2500);
+    // Expose data to the external JS file
+    window.kinBechChat = {
+        conversationId: {{ conversation.id }},
+        myUserId: {{ request.user.id }},
+        lastMessageId: {{ last_message_id }}
+    };
 </script>
+<script src="{% static 'js/chat_poll.js' %}"></script>
 {% endblock %}
