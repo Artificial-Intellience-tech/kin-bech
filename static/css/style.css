@@ -502,3 +502,44 @@ img {
     font-weight: 800;
     margin: 24px 0 12px;
 }
+/* Unread badge */
+.badge {
+    display: inline-block;
+    min-width: 1.2em;
+    padding: 0.25em 0.5em;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff;
+    background: #dc3545;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 6px;
+}
+
+/* Chat bubbles */
+#messages-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+
+.message-bubble.me {
+    align-self: flex-end;
+    background: #007bff;  /* blue */
+    color: #fff;
+}
+
+.message-bubble.other {
+    align-self: flex-start;
+    background: #e5e5e5;  /* grey */
+    color: #000;
+}

@@ -38,8 +38,14 @@
         <a href="{% url 'search' %}" title="Search" class="nav-icon-search">🔍</a>
         <a href="{% url 'create_post' %}" title="Add" class="nav-icon-add">➕</a>
         <!-- Paper airplane icon for Messages -->
-        <a href="{% url 'conversations' %}" title="Messages" class="nav-icon-messages">📩</a>
+        <a href="{% url 'conversations' %}" class="nav-link">
+            Messages
+            {% if unread_msg_count %}
+                <span class="badge">{{ unread_msg_count }}</span>
+            {% endif %}
+        </a>        
         <a href="{% url 'settings' %}" title="Settings" class="nav-icon-settings">⚙️</a>
+        <a href="{% url 'user_search' %}">New message</a>
     </nav>
     {% endif %}
 </body>
