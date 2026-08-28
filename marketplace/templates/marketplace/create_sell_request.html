@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="auth-box">
+    <h2>Create Sell Request</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <label for="images">Upload images</label>
+        <input type="file" name="images" id="images" multiple accept="image/*">
+
+        <button type="submit" class="btn">Post</button>
+    </form>
+
+    <p>
+        <a href="{% url 'market:marketplace' %}">Back to marketplace</a>
+    </p>
+</div>
+{% endblock %}

@@ -3,15 +3,10 @@ from .models import SellRequest, SellImage
 
 
 class SellRequestForm(forms.ModelForm):
-    images = forms.ImageField(
-        widget=forms.ClearableFileInput(attrs={"multiple": True}),
-        required=False,
-        label="Upload images",
-    )
-
     class Meta:
         model = SellRequest
-        fields = ["title", "description", "price", "location", "images"]
+        fields = ["title", "description", "price", "location"]
+        # No "images" field here; we handle multiple files manually in the view.
 
 
 class SellImageForm(forms.ModelForm):
