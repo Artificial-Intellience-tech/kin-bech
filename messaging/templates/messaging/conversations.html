@@ -8,9 +8,15 @@
     <div class="card conversation-card">
         <a href="{% url 'conversation_detail' conv.id %}">
             <div class="conversation-row">
-                <img src="{{ other_user.profile_picture.url|default:'/static/img/default-avatar.png' }}"
-                     alt="{{ other_user.username }}"
-                     class="conversation-avatar">
+                {% if other_user.profile_picture %}
+                    <img src="{{ other_user.profile_picture.url }}"
+                         alt="{{ other_user.username }}"
+                         class="conversation-avatar">
+                {% else %}
+                    <img src="/static/img/default-avatar.png"
+                         alt="{{ other_user.username }}"
+                         class="conversation-avatar">
+                {% endif %}
 
                 <div class="conversation-info">
                     <div class="conversation-name">{{ other_user.username }}</div>
