@@ -3,9 +3,8 @@
 {% block content %}
 <h2 class="section-title">Messages</h2>
 
-{% for conv in conversations %}
-    {% with other_user=conv.participants.exclude(id=request.user.id).first %}
-    {% with last_message=conv.messages.order_by('-created_at').first %}
+{% for item in conv_data %}
+    {% with conv=item.conversation other_user=item.other_user last_message=item.last_message %}
     <div class="card conversation-card">
         <a href="{% url 'conversation_detail' conv.id %}">
             <div class="conversation-row">
@@ -30,7 +29,6 @@
             </div>
         </a>
     </div>
-    {% endwith %}
     {% endwith %}
 {% empty %}
 <div class="card">
