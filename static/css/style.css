@@ -656,3 +656,73 @@ img {
     font-weight: 700;
     white-space: nowrap;
 }
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #e5e7eb;
+}
+
+.guest-avatar {
+    font-size: 22px;
+}
+
+#messages-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #fafbfc;
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.chat-form input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+}
+
+.message-bubble.me {
+    align-self: flex-end;
+    background: #007bff;
+    color: #fff;
+}
+
+.message-bubble.other {
+    align-self: flex-start;
+    background: #e5e5e5;
+    color: #000;
+}

@@ -2,9 +2,26 @@
 {% load static %}
 
 {% block content %}
-<h2>Chat with {{ other_user.username }}</h2>
+<div class="chat-header">
+    {% if other_user.profile_picture %}
+        <img
+            src="{{ other_user.profile_picture.url }}"
+            alt="{{ other_user.username }}"
+            class="chat-avatar"
+        >
+    {% else %}
+        <span class="chat-avatar guest-avatar" aria-label="Guest avatar">👤</span>
+    {% endif %}
 
-<div id="messages-container" style="max-height: 60vh; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;">
+    <h2>Chat with {{ other_user.username }}</h2>
+</div>
+
+<div
+    id="messages-container"
+    data-conversation-id="{{ conversation.id }}"
+    data-user-id="{{ request.user.id }}"
+    data-last-message-id="{{ last_message_id }}"
+>
     {% for message in messages %}
         <div class="message-bubble {% if message.sender == request.user %}me{% else %}other{% endif %}">
             {{ message.text }}
@@ -12,18 +29,17 @@
     {% endfor %}
 </div>
 
-<form method="post" style="margin-top: 12px; display: flex; gap: 8px;">
+<form method="post" class="chat-form">
     {% csrf_token %}
-    <input type="text" name="text" placeholder="Type a message..." style="flex: 1;">
+    <input
+        type="text"
+        name="text"
+        placeholder="Type a message..."
+        autocomplete="off"
+        required
+    >
     <button type="submit">Send</button>
 </form>
 
-<script>
-    window.kinBechChat = {
-        conversationId: {{ conversation.id }},
-        myUserId: {{ request.user.id }},
-        lastMessageId: {{ last_message_id }}
-    };
-</script>
 <script src="{% static 'js/chat_poll.js' %}"></script>
 {% endblock %}
