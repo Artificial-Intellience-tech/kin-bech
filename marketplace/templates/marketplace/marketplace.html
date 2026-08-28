@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="marketplace-page">
+    <h1 class="page-title">Marketplace</h1>
+
+    {% if sell_requests %}
+        {% for item in sell_requests %}
+        <div class="sell-request-card">
+            <div class="sell-request-text">
+                <h3 class="sell-request-title">{{ item.title }}</h3>
+                <p class="sell-request-price">Rs {{ item.price }}</p>
+                <p class="sell-request-location">{{ item.location|default:"" }}</p>
+                <p class="sell-request-description">{{ item.description|truncatechars:140 }}</p>
+                <div class="sell-request-meta">
+                    <span class="sell-request-seller">By {{ item.seller.username }}</span>
+                    <span class="sell-request-time">{{ item.created_at|timesince }} ago</span>
+                </div>
+            </div>
+
+            <div class="sell-request-image-wrap">
+                {% if item.images.all %}
+                    {% with first_image=item.images.first.image.url %}
+                    <img
+                        src="{{ first_image }}"
+                        alt="{{ item.title }}"
+                        class="sell-request-thumb"
+                        onclick="openSellImageModal('{{ first_image }}')"
+                    >
+                    {% endwith %}
+
+                    {% if item.images.count > 1 %}
+                    <div class="sell-request-image-count">
+                        +{{ item.images.count|add:"-1" }}
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="sell-request-no-image">No image</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-posts">No sell requests yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

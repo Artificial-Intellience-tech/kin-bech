@@ -52,5 +52,75 @@
         <a href="{% url 'settings' %}" title="Settings" class="nav-icon-settings">⚙️</a>
     </nav>
     {% endif %}
+
+    <!-- Full-size image modal -->
+    <div id="image-modal" class="image-modal" style="display:none;">
+        <div class="image-modal-content">
+            <span class="image-modal-close">&times;</span>
+            <img id="image-modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('image-modal-img');
+        const closeBtn = modal.querySelector('.image-modal-close');
+
+        function openModal(src) {
+            modalImg.src = src;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modalImg.src = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // Expose to global scope for inline onclick
+        window.openSellImageModal = openModal;
+    })();
+    </script>
+
+    <style>
+    /* Image modal */
+    .image-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+    }
+
+    .image-modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        display: block;
+        border-radius: 8px;
+    }
+
+    .image-modal-close {
+        position: absolute;
+        top: -30px;
+        right: 0;
+        color: #fff;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    </style>
 </body>
 </html>
