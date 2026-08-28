@@ -1,44 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <h2 class="section-title">Messages</h2>
 
-{% for item in conv_data %}
-    {% with conv=item.conversation other_user=item.other_user last_message=item.last_message %}
-    <div class="card conversation-card">
-        <a href="{% url 'conversation_detail' conv.id %}">
-            <div class="conversation-row">
-                {% if other_user.profile_picture %}
-                    <img src="{{ other_user.profile_picture.url }}"
-                         alt="{{ other_user.username }}"
-                         class="conversation-avatar">
+<div class="conversations-list">
+    {% for item in conv_data %}
+        <div class="conversation-card">
+            <a href="{% url 'conversation_detail' item.conversation.id %}" class="conversation-link">
+                {% if item.other_user.profile_picture %}
+                    <img
+                        src="{{ item.other_user.profile_picture.url }}"
+                        alt="{{ item.other_user.username }}"
+                        class="conversation-avatar"
+                    >
                 {% else %}
-                    <img src="/static/img/default-avatar.png"
-                         alt="{{ other_user.username }}"
-                         class="conversation-avatar">
+                    <span class="conversation-avatar guest-avatar" aria-label="Guest profile picture">👤</span>
                 {% endif %}
 
                 <div class="conversation-info">
-                    <div class="conversation-name">{{ other_user.username }}</div>
+                    <div class="conversation-name">
+                        {{ item.other_user.username }}
+                    </div>
+
                     <div class="conversation-preview">
-                        {% if last_message %}
-                            {% if last_message.sender == request.user %}
-                                You: {{ last_message.text|truncatechars:40 }}
+                        {% if item.last_message %}
+                            {% if item.last_message.sender_id == request.user.id %}
+                                You: {{ item.last_message.text|truncatechars:45 }}
                             {% else %}
-                                {{ other_user.username }}: {{ last_message.text|truncatechars:40 }}
+                                {{ item.other_user.username }}: {{ item.last_message.text|truncatechars:45 }}
                             {% endif %}
                         {% else %}
                             No messages yet
                         {% endif %}
                     </div>
                 </div>
-            </div>
-        </a>
-    </div>
-    {% endwith %}
-{% empty %}
-<div class="card">
-    <p>No conversations yet.</p>
+            </a>
+        </div>
+    {% empty %}
+        <div class="card">
+            <p>No conversations yet. Use the person icon in the bottom navigation to start a new message.</p>
+        </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}
