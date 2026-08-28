@@ -58,3 +58,13 @@ def user_search(request):
         users = users.filter(username__icontains=q)
     users = users.exclude(id=request.user.id)
     return render(request, "accounts/user_search.html", {"users": users, "q": q})
+
+
+@login_required
+def profile_view(request, username):
+    profile_user = get_object_or_404(User, username=username)
+    posts = profile_user.posts.all()
+    return render(request, "accounts/profile.html", {
+        "profile_user": profile_user,
+        "posts": posts,
+    })

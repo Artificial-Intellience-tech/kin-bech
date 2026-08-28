@@ -548,3 +548,41 @@ img {
     background: #e5e5e5;  /* grey */
     color: #000;
 }
+/* Conversation list */
+.conversation-card a {
+    display: block;
+}
+
+.conversation-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.conversation-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e5e7eb;
+    flex-shrink: 0;
+}
+
+.conversation-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.conversation-preview {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
