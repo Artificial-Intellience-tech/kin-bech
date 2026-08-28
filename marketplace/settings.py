@@ -19,7 +19,7 @@ DEBUG = True
 
 
 ALLOWED_HOSTS = [
-    ".onrender.com",  # allows any subdomain on onrender.com
+    ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'posts',
     'messaging',
     'search',
-    'market',  # <-- marketplace app (sell requests)
+    'market',
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise for static files
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -114,20 +114,18 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-# Use WhiteNoise for static files in production
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Media files (user uploads)
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# In production on Render, filesystem is temporary.
-# For a simple deploy, we'll just ignore media if not DEBUG.
-if not DEBUG:
-    MEDIA_ROOT = None
-    MEDIA_URL = None
+# Temporary: keep media enabled even in production for testing.
+# Files won't persist across deploys on Render, but this lets us test.
+# if not DEBUG:
+#     MEDIA_ROOT = None
+#     MEDIA_URL = None
 
 
 # Auth settings
@@ -144,6 +142,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Simple security tweaks for production (behind Render's proxy)
 if not DEBUG:
-    SECURE_SSL_REDIRECT = False  # Render handles HTTPS termination
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False

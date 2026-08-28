@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from posts.views import home_view
 
 urlpatterns = [
-    path("", home_view, name="home"),  # root URL opens dashboard/home
+    path("", home_view, name="home"),
 
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
@@ -18,5 +18,5 @@ urlpatterns = [
     path("market/", include("market.urls")),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Always serve media for now (temporary on Render)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

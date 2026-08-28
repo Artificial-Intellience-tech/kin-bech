@@ -5,6 +5,10 @@
 <div class="marketplace-page">
     <h1 class="page-title">Marketplace</h1>
 
+    <p style="margin-bottom: 16px;">
+        <a href="{% url 'market:create_sell_request' %}" class="btn">Create Sell Request</a>
+    </p>
+
     {% if sell_requests %}
         {% for item in sell_requests %}
         <div class="sell-request-card">

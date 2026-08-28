@@ -16,13 +16,13 @@ def marketplace_list(request):
 @login_required
 def create_sell_request(request):
     if request.method == "POST":
-        form = SellRequestForm(request.POST, request.FILES)
+        form = SellRequestForm(request.POST)
         if form.is_valid():
             sell_request = form.save(commit=False)
             sell_request.seller = request.user
             sell_request.save()
 
-            # Save multiple uploaded images
+            # Handle multiple uploaded images
             for img in request.FILES.getlist("images"):
                 SellImage.objects.create(sell_request=sell_request, image=img)
 

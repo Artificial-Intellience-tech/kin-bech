@@ -3,7 +3,16 @@ from .models import User
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    """
+    Registration form:
+    - Accepts usernames in any language (Nepali, Hindi, etc.)
+      because the model's username field uses UnicodeUsernameValidator.
+    - Accepts any characters in password.
+    """
+    password = forms.CharField(
+        widget=forms.PasswordInput,
+        label="Password",
+    )
 
     class Meta:
         model = User
@@ -18,6 +27,11 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
+    """
+    Profile edit form:
+    - Username can be in any language (as allowed by the model).
+    - All other fields are normal text/image fields.
+    """
     class Meta:
         model = User
         fields = ["username", "email", "bio", "location", "profile_picture"]

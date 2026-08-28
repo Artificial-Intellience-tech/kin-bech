@@ -6,7 +6,7 @@ class SellRequestForm(forms.ModelForm):
     class Meta:
         model = SellRequest
         fields = ["title", "description", "price", "location"]
-        # No "images" field here; we handle multiple files manually in the view.
+        # Images are handled via raw <input type="file" multiple> in the template.
 
 
 class SellImageForm(forms.ModelForm):
