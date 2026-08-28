@@ -11,19 +11,23 @@ def conversations_list(request):
         conversationmember__user=request.user
     ).distinct().order_by('-updated_at')
 
-    # Annotate each conversation with other_user and last_message
     conv_data = []
+
     for conv in conversations:
         other_user = conv.participants.exclude(id=request.user.id).first()
         last_message = conv.messages.order_by('-created_at').first()
+
         conv_data.append({
             "conversation": conv,
             "other_user": other_user,
             "last_message": last_message,
         })
 
-    return render(request, 'messaging/conversations.html', {'conv_data': conv_data})
-
+    return render(
+        request,
+        "messaging/conversations.html",
+        {"conv_data": conv_data}
+    )
 
 @login_required
 def conversation_detail(request, conversation_id):
