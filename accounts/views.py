@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from .forms import UserRegistrationForm, ProfileForm
+from .models import User
+from market.models import SellRequest
 
 User = get_user_model()
 
@@ -67,4 +69,12 @@ def profile_view(request, username):
     return render(request, "accounts/profile.html", {
         "profile_user": profile_user,
         "posts": posts,
+    })
+
+def profile_view(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    items = SellRequest.objects.filter(user=user).order_by("-created_at")
+    return render(request, "accounts/profile.html", {
+        "profile_user": user,
+        "items": items,
     })

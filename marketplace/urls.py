@@ -18,5 +18,5 @@ urlpatterns = [
     path("market/", include("market.urls")),
 ]
 
-# Always serve media for now (temporary on Render)
+# Serve media files in development (and temporarily on Render)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import SellRequest, SellImage
 from .forms import SellRequestForm
@@ -16,7 +16,7 @@ def marketplace_list(request):
 @login_required
 def create_sell_request(request):
     if request.method == "POST":
-        form = SellRequestForm(request.POST)
+        form = SellRequestForm(request.POST, request.FILES)
         if form.is_valid():
             sell_request = form.save(commit=False)
             sell_request.seller = request.user
@@ -35,3 +35,14 @@ def create_sell_request(request):
         "marketplace/create_sell_request.html",
         {"form": form},
     )
+
+
+@login_required
+def delete_sell_request(request, pk):
+    item = get_object_or_404(SellRequest, pk=pk)
+    if item.seller != request.user:
+        return redirect("market:marketplace")
+
+    item.delete()
+    # Redirect to the logged-in user's profile
+    return redirect("profile", user_id=request.user.id)

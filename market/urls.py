@@ -5,5 +5,6 @@ app_name = "market"
 
 urlpatterns = [
     path("", views.marketplace_list, name="marketplace"),
-    path("create/", views.create_sell_request, name="create_sell_request"),
+    path("sell/", views.create_sell_request, name="create_sell_request"),
+    path("sell/<int:pk>/delete/", views.delete_sell_request, name="delete_sell_request"),
 ]

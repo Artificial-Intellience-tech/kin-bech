@@ -640,4 +640,59 @@ img {
     font-size: 0.75rem;
     font-weight: bold;
     text-align: center;
+}/* =========================
+   Extra: circular pfp, sell-card, delete button
+   ========================= */
+
+/* Small circular avatar (used in header, cards, etc.) */
+.pfp,
+.profile-picture,
+img.pfp,
+img.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+}
+
+/* Sell request card container */
+.sell-card {
+    width: 100%;
+    max-width: 260px; /* adjust as needed */
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 14px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Image inside the sell card */
+.sell-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+/* Delete button for posts */
+.btn-delete {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.btn-delete:hover {
+    background: #b02a37;
 }

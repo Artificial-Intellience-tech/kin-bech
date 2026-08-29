@@ -1,5 +1,5 @@
 /* =========================
-   Kin Bech – WWF-style CSS
+   Kin Bech – Main Styles
    ========================= */
 
 :root {
@@ -9,9 +9,9 @@
     --color-text-muted: #6b7280;
     --color-border: #e5e7eb;
 
-    --color-primary: #0b3d6b;      /* Dark blue */
-    --color-primary-light: #3b82f6;/* Light blue */
-    --color-accent: #8b2d2d;       /* Dark red/brown for CTA */
+    --color-primary: #0b3d6b;
+    --color-primary-light: #3b82f6;
+    --color-accent: #8b2d2d;
     --color-accent-hover: #6b1f1f;
 
     --radius-sm: 6px;
@@ -19,8 +19,8 @@
     --radius-lg: 14px;
     --radius-pill: 9999px;
 
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -47,32 +47,32 @@ img {
 }
 
 /* =========================
-   Header / Navigation
+   Header
    ========================= */
 
 .site-header {
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 1000;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 16px;
 }
 
 .brand {
+    color: var(--color-primary);
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 0.3px;
-    color: var(--color-primary);
 }
 
 .header-nav {
@@ -83,12 +83,12 @@ img {
 }
 
 .header-nav a {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-text);
     padding: 6px 8px;
     border-radius: var(--radius-sm);
-    transition: background 0.15s ease, color 0.15s ease;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.15s ease;
 }
 
 .header-nav a:hover {
@@ -102,30 +102,37 @@ img {
 .site-main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 16px 80px;
+    padding: 24px 16px 88px;
+}
+
+.section-title {
+    margin: 24px 0 12px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--color-text-muted);
 }
 
 /* =========================
-   Hero section (WWF-style)
+   Hero
    ========================= */
 
 .hero {
-    background: var(--color-primary);
-    color: #fff;
-    border-radius: var(--radius-lg);
-    padding: 32px 20px;
-    margin-bottom: 28px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     overflow: hidden;
-}
-
-@media (min-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr 1fr;
-        padding: 40px 28px;
-    }
+    margin-bottom: 28px;
+    padding: 32px 20px;
+    border-radius: var(--radius-lg);
+    background: var(--color-primary);
+    color: #ffffff;
 }
 
 .hero-content {
@@ -136,54 +143,55 @@ img {
 }
 
 .hero-title {
+    margin: 0;
     font-size: 28px;
     font-weight: 800;
     line-height: 1.15;
-    margin: 0;
-}
-
-@media (min-width: 768px) {
-    .hero-title {
-        font-size: 36px;
-    }
 }
 
 .hero-subtitle {
-    font-size: 16px;
-    color: #cfe6ff;
     margin: 0;
-}
-
-@media (min-width: 768px) {
-    .hero-subtitle {
-        font-size: 18px;
-    }
+    color: #cfe6ff;
+    font-size: 16px;
 }
 
 .hero-image {
     width: 100%;
     height: 220px;
-    object-fit: cover;
     border-radius: var(--radius-md);
     background: #124a8a;
+    object-fit: cover;
 }
 
 @media (min-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        padding: 40px 28px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
     .hero-image {
         height: 260px;
     }
 }
 
 /* =========================
-   Cards (posts, profiles, etc.)
+   Cards
    ========================= */
 
 .card {
-    background: var(--color-surface);
+    margin-bottom: 14px;
+    padding: 14px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 14px;
-    margin-bottom: 14px;
+    background: var(--color-surface);
     box-shadow: var(--shadow-sm);
 }
 
@@ -201,14 +209,14 @@ img {
 .card img {
     width: 100%;
     height: auto;
-    border-radius: var(--radius-sm);
     margin-top: 8px;
+    border-radius: var(--radius-sm);
 }
 
 .card .meta {
-    font-size: 12px;
-    color: var(--color-text-muted);
     margin-top: 6px;
+    color: var(--color-text-muted);
+    font-size: 12px;
 }
 
 .card a.link-primary {
@@ -222,14 +230,14 @@ img {
 
 .btn {
     display: inline-block;
-    background: var(--color-accent);
-    color: #fff;
-    border: none;
     padding: 10px 18px;
+    border: none;
     border-radius: var(--radius-pill);
+    background: var(--color-accent);
+    color: #ffffff;
+    cursor: pointer;
     font-size: 14px;
     font-weight: 700;
-    cursor: pointer;
     text-align: center;
     transition: background 0.15s ease, transform 0.05s ease;
 }
@@ -242,22 +250,22 @@ img {
     transform: translateY(1px);
 }
 
-.btn-secondary {
-    background: #fff;
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
-}
-
-.btn-secondary:hover {
-    background: #f9fafb;
-}
-
 .btn-primary {
     background: var(--color-primary);
 }
 
 .btn-primary:hover {
     background: #072a4d;
+}
+
+.btn-secondary {
+    border: 1px solid var(--color-border);
+    background: #ffffff;
+    color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
 }
 
 /* =========================
@@ -271,8 +279,8 @@ img {
 .form-group label {
     display: block;
     margin-bottom: 6px;
-    font-size: 13px;
     color: var(--color-text-muted);
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -283,8 +291,8 @@ img {
     padding: 8px 10px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
+    background: #ffffff;
     font-size: 14px;
-    background: #fff;
 }
 
 .form-group input:focus,
@@ -294,125 +302,6 @@ img {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 2px rgba(11, 61, 107, 0.12);
 }
-
-/* =========================
-   Auth pages (login/register)
-   ========================= */
-
-.auth-box {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 22px;
-    max-width: 380px;
-    margin: 24px auto;
-    text-align: center;
-    box-shadow: var(--shadow-md);
-}
-
-.auth-box h2 {
-    margin: 0 0 8px;
-    font-size: 22px;
-    font-weight: 800;
-}
-
-.auth-box p {
-    margin: 0 0 16px;
-    font-size: 14px;
-    color: var(--color-text-muted);
-}
-
-.auth-box a {
-    color: var(--color-primary);
-    font-weight: 700;
-}
-
-/* =========================
-   Profile header
-   ========================= */
-
-.profile-header {
-    background: linear-gradient(180deg, #eef6ff, #fff);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 22px 16px;
-    text-align: center;
-    margin-bottom: 18px;
-}
-
-.profile-header img {
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #fff;
-    box-shadow: var(--shadow-md);
-    margin: 0 auto 10px;
-}
-
-.profile-header h2 {
-    margin: 8px 0 4px;
-    font-size: 20px;
-    font-weight: 800;
-}
-
-.profile-header .bio {
-    font-size: 14px;
-    margin: 4px 0;
-}
-
-.profile-header .location {
-    font-size: 13px;
-    color: var(--color-text-muted);
-    margin: 4px 0 10px;
-}
-
-.profile-header .message-btn {
-    display: inline-block;
-    background: var(--color-primary);
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 18px;
-    border-radius: var(--radius-pill);
-    font-size: 14px;
-    font-weight: 700;
-}
-
-/* =========================
-   Chat / Messages
-   ========================= */
-
-.chat-messages {
-    max-height: 55vh;
-    overflow-y: auto;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 10px;
-    margin-bottom: 10px;
-    background: #fafbfc;
-}
-
-.chat-messages p {
-    margin: 4px 0;
-    font-size: 14px;
-}
-
-.chat-form {
-    display: flex;
-    gap: 8px;
-}
-
-.chat-form input[type="text"] {
-    flex: 1;
-    padding: 8px 10px;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-}
-
-/* =========================
-   Search
-   ========================= */
 
 .search-form {
     display: flex;
@@ -429,76 +318,381 @@ img {
 }
 
 /* =========================
-   Bottom navigation (mobile, colorful icons)
+   Auth
+   ========================= */
+
+.auth-box {
+    max-width: 380px;
+    margin: 24px auto;
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.auth-box h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.auth-box p {
+    margin: 0 0 16px;
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.auth-box a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* =========================
+   Profile
+   ========================= */
+
+.profile-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    padding: 22px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, #eef6ff, #ffffff);
+}
+
+.profile-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+    object-fit: cover;
+}
+
+.profile-name-block {
+    min-width: 0;
+}
+
+.profile-name-block h2 {
+    margin: 0 0 4px;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-name-block .bio {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.profile-name-block .location {
+    margin: 4px 0 0;
+    color: var(--color-text-muted);
+    font-size: 13px;
+}
+
+.profile-header-right {
+    flex-shrink: 0;
+}
+
+.profile-header .message-btn {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =========================
+   Conversation list
+   ========================= */
+
+.conversations-list {
+    display: block;
+    width: 100%;
+}
+
+.conversation-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.conversation-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 14px;
+}
+
+.conversation-link:hover {
+    background: #f8fafc;
+}
+
+.conversation-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    object-fit: cover;
+}
+
+.conversation-info {
+    display: block;
+    min-width: 0;
+    flex: 1;
+}
+
+.conversation-name {
+    display: block;
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.conversation-preview {
+    display: block;
+    margin-top: 2px;
+    overflow: hidden;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.guest-avatar {
+    font-size: 23px;
+}
+
+/* =========================
+   Chat
+   ========================= */
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #ffffff;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.chat-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    object-fit: cover;
+}
+
+#messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 60vh;
+    padding: 10px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: #fafbfc;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+}
+
+.message-bubble.me {
+    align-self: flex-end;
+    background: #007bff;
+    color: #ffffff;
+}
+
+.message-bubble.other {
+    align-self: flex-start;
+    background: #e5e5e5;
+    color: #000000;
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.chat-form input,
+.chat-form input[type="text"] {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+}
+
+/* =========================
+   Bottom navigation
    ========================= */
 
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
     max-width: 520px;
-    background: #fff;
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     padding: 8px 0;
-    z-index: 1000;
+    transform: translateX(-50%);
+    border-top: 1px solid var(--color-border);
+    background: #ffffff;
 }
 
-/* Base icon style */
 .bottom-nav a {
-    text-decoration: none;
-    font-size: 22px;
-    text-align: center;
+    position: relative;
     padding: 6px 8px;
     border-radius: var(--radius-sm);
+    font-size: 22px;
+    text-align: center;
+    text-decoration: none;
     transition: transform 0.1s ease, filter 0.15s ease, background 0.15s ease;
 }
 
-/* Individual icon colors */
-.bottom-nav .nav-icon-home {
-    color: #7c3aed;   /* Purple */
-}
-
-.bottom-nav .nav-icon-search {
-    color: #db2777;   /* Pink */
-}
-
-.bottom-nav .nav-icon-add {
-    color: #f59e0b;   /* Yellow / Amber */
-}
-
-.bottom-nav .nav-icon-messages {
-    color: #2563eb;   /* Blue (paper airplane) */
-}
-
-.bottom-nav .nav-icon-settings {
-    color: #16a34a;   /* Green */
-}
-
-/* Hover effect */
 .bottom-nav a:hover {
     background: #f3f4f6;
     filter: brightness(0.9);
 }
 
-/* =========================
-   Utility
+.bottom-nav .nav-icon-home {
+    color: #7c3aed;
+}
+
+.bottom-nav .nav-icon-search {
+    color: #db2777;
+}
+
+.bottom-nav .nav-icon-add {
+    color: #f59e0b;
+}
+
+.bottom-nav .nav-icon-messages {
+    color: #2563eb;
+}
+
+.bottom-nav .nav-icon-settings {
+    color: #16a34a;
+}
+
+.badge {
+    position: absolute;
+    top: 2px;
+    right: 6px;
+    display: inline-block;
+    min-width: 1.2em;
+    padding: 0.25em 0.5em;
+    border-radius: 10px;
+    background: #dc3545;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+}/* =========================
+   Extra: circular pfp, sell-card, delete button
    ========================= */
 
-.text-center {
-    text-align: center;
+/* Small circular avatar (used in header, cards, etc.) */
+.pfp,
+.profile-picture,
+img.pfp,
+img.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
 }
 
-.text-muted {
-    color: var(--color-text-muted);
+/* Sell request card container */
+.sell-card {
+    width: 100%;
+    max-width: 260px; /* adjust as needed */
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 14px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
 }
 
-.section-title {
-    font-size: 20px;
-    font-weight: 800;
-    margin: 24px 0 12px;
+/* Image inside the sell card */
+.sell-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+/* Delete button for posts */
+.btn-delete {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: inline-block;
+}
+
+.btn-delete:hover {
+    background: #b02a37;
 }
